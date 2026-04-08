@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Case Workspace | The Sentinel Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-fixed": "#d5e3fc",
+                        "secondary": "#515f74",
+                        "tertiary-container": "#00201d",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-background": "#191c1e",
+                        "secondary-container": "#d5e3fc",
+                        "on-tertiary-container": "#0c9488",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "primary-container": "#131b2e",
+                        "inverse-primary": "#bec6e0",
+                        "surface-container-low": "#f2f4f6",
+                        "tertiary-fixed": "#89f5e7",
+                        "outline-variant": "#c6c6cd",
+                        "surface-variant": "#e0e3e5",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary": "#000000",
+                        "on-tertiary-fixed-variant": "#005049",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#6bd8cb",
+                        "background": "#f7f9fb",
+                        "on-surface-variant": "#45464d",
+                        "on-primary": "#ffffff",
+                        "outline": "#76777d",
+                        "surface-container": "#eceef0",
+                        "on-surface": "#191c1e",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary-container": "#57657a",
+                        "on-primary-fixed": "#131b2e",
+                        "error-container": "#ffdad6",
+                        "surface": "#f7f9fb",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "tertiary": "#000000",
+                        "on-tertiary-fixed": "#00201d",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2d3133",
+                        "surface-tint": "#565e74",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dae2fd",
+                        "on-error": "#ffffff"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex h-screen overflow-hidden">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full w-64 z-40 flex flex-col py-6 bg-slate-900 dark:bg-black shadow-xl dark:shadow-none">
+<div class="px-6 mb-8">
+<h1 class="text-lg font-black tracking-widest text-white">THE SENTINEL</h1>
+<p class="text-[10px] font-bold uppercase tracking-widest text-teal-400 opacity-80">Intelligence Platform</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-slate-400 hover:text-slate-100 px-4 py-3 flex items-center gap-3 hover:bg-slate-800/50 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="bg-slate-800 text-teal-400 border-r-4 border-teal-400 px-4 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="text-sm font-medium">My Cases</span>
+</a>
+<a class="text-slate-400 hover:text-slate-100 px-4 py-3 flex items-center gap-3 hover:bg-slate-800/50 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">assignment_ind</span>
+<span class="text-sm font-medium">Referrals</span>
+</a>
+<a class="text-slate-400 hover:text-slate-100 px-4 py-3 flex items-center gap-3 hover:bg-slate-800/50 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">history_toggle_off</span>
+<span class="text-sm font-medium">Renewals</span>
+</a>
+<a class="text-slate-400 hover:text-slate-100 px-4 py-3 flex items-center gap-3 hover:bg-slate-800/50 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">Portfolio</span>
+</a>
+<a class="text-slate-400 hover:text-slate-100 px-4 py-3 flex items-center gap-3 hover:bg-slate-800/50 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="text-sm font-medium">Audit</span>
+</a>
+</nav>
+<div class="mt-auto px-4 space-y-1">
+<a class="text-slate-400 hover:text-slate-100 px-4 py-3 flex items-center gap-3 hover:bg-slate-800/50 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<div class="pt-4 border-t border-slate-800 mt-4 flex items-center gap-3 px-4">
+<div class="w-8 h-8 rounded-full bg-teal-500/20 flex items-center justify-center border border-teal-500/30">
+<span class="material-symbols-outlined text-teal-400 text-sm">person</span>
+</div>
+<div class="overflow-hidden">
+<p class="text-xs font-bold text-white truncate">Cyber Underwriter</p>
+<p class="text-[10px] text-slate-500 truncate">Authority: ₹25 Cr</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 flex flex-col h-screen bg-surface">
+<!-- TopAppBar (Shared Component) -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-slate-50 dark:bg-slate-900 flex justify-between items-center px-8 z-50 border-b-0">
+<div class="flex items-center gap-6">
+<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-50">The Sentinel Intelligence</span>
+<div class="h-4 w-[1px] bg-slate-300"></div>
+<div class="flex gap-4">
+<button class="text-slate-900 dark:text-slate-50 font-bold border-b-2 border-slate-900 dark:border-slate-50 text-xs py-1">WORKSPACE</button>
+<button class="text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors text-xs py-1 px-2 rounded">DOCUMENTS</button>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-xs font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200">
+                    Cyber Underwriter | <span class="font-bold text-slate-900">Authority: ₹25 Cr</span>
+</div>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-slate-600 cursor-pointer hover:bg-slate-200 p-1.5 rounded-full transition-colors">notifications</span>
+<span class="material-symbols-outlined text-slate-600 cursor-pointer hover:bg-slate-200 p-1.5 rounded-full transition-colors">help</span>
+<span class="material-symbols-outlined text-slate-600 cursor-pointer hover:bg-slate-200 p-1.5 rounded-full transition-colors">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Case Header (Sticky) -->
+<section class="mt-16 bg-surface-container-low px-8 py-4 flex items-center justify-between border-b-0 shadow-sm relative z-30">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Proposal ID: CYB-24103</span>
+<span class="w-1 h-1 rounded-full bg-slate-400"></span>
+<a class="text-sm font-bold text-primary hover:underline" href="#">ABC Healthcare Pvt Ltd</a>
+</div>
+<div class="flex gap-4 mt-2">
+<div class="flex flex-col">
+<span class="text-[9px] uppercase font-bold text-on-surface-variant tracking-tighter">Risk Band</span>
+<span class="text-xs font-bold text-error flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-error"></span> HIGH
+                        </span>
+</div>
+<div class="flex flex-col border-l border-outline-variant pl-4">
+<span class="text-[9px] uppercase font-bold text-on-surface-variant tracking-tighter">Eligibility</span>
+<span class="text-xs font-bold text-orange-600 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-orange-500"></span> CONDITIONAL
+                        </span>
+</div>
+<div class="flex flex-col border-l border-outline-variant pl-4">
+<span class="text-[9px] uppercase font-bold text-on-surface-variant tracking-tighter">Stage</span>
+<span class="text-xs font-bold text-on-surface">Risk Assessment</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="bg-error-container/20 p-3 rounded-lg flex items-center gap-4">
+<div class="flex flex-col">
+<span class="text-[9px] uppercase font-bold text-error tracking-tighter">Authority Breach</span>
+<span class="text-sm font-black text-on-error-container">₹40 Cr <span class="text-[10px] font-normal opacity-70">/ ₹25 Cr Cap</span></span>
+</div>
+<span class="material-symbols-outlined text-error" data-weight="fill">warning</span>
+</div>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-lowest border border-outline-variant rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">refresh</span>
+</button>
+<button class="p-2 bg-surface-container-lowest border border-outline-variant rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">account_tree</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Three-Panel Layout -->
+<div class="flex flex-1 overflow-hidden">
+<!-- Left Panel: Risk Facts -->
+<aside class="w-80 bg-surface border-r-0 overflow-y-auto no-scrollbar p-6">
+<h3 class="font-headline font-extrabold text-xs uppercase tracking-[0.15em] text-on-surface-variant mb-6">Risk Facts</h3>
+<div class="space-y-6">
+<!-- Customer Profile -->
+<section class="bg-surface-container-low p-4 rounded-xl">
+<div class="flex justify-between items-center mb-3">
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Customer Profile</span>
+<span class="text-[9px] px-1.5 py-0.5 bg-slate-200 text-slate-600 font-bold rounded">PROPOSAL</span>
+</div>
+<ul class="space-y-3">
+<li><p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Industry</p><p class="text-sm font-semibold">Healthcare</p></li>
+<li><p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Turnover</p><p class="text-sm font-semibold">₹250 Cr</p></li>
+<li><p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Geography</p><p class="text-sm font-semibold">India (5 States)</p></li>
+<li><p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Employees</p><p class="text-sm font-semibold">1,200</p></li>
+</ul>
+</section>
+<!-- Cyber Exposure -->
+<section>
+<h4 class="text-[11px] font-bold text-on-surface mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">analytics</span> Cyber Exposure
+                        </h4>
+<div class="flex flex-wrap gap-2">
+<span class="text-[10px] font-medium bg-surface-container-highest px-2 py-1 rounded">PII &amp; Health Records</span>
+<span class="text-[10px] font-medium bg-surface-container-highest px-2 py-1 rounded">High IT Dependency</span>
+<span class="text-[10px] font-medium bg-surface-container-highest px-2 py-1 rounded">12 Third-Party Vendors</span>
+</div>
+</section>
+<!-- Security Controls -->
+<section class="bg-surface-container-low p-4 rounded-xl">
+<h4 class="text-[11px] font-bold text-on-surface mb-3">Security Controls</h4>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">Firewall</span>
+<span class="material-symbols-outlined text-teal-600 text-sm" data-weight="fill">check_circle</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">Endpoint Protection</span>
+<span class="material-symbols-outlined text-teal-600 text-sm" data-weight="fill">check_circle</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs text-on-surface-variant font-bold text-error">MFA Implementation</span>
+<span class="material-symbols-outlined text-error text-sm" data-weight="fill">cancel</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">Patching</span>
+<span class="text-[10px] font-bold uppercase">Monthly</span>
+</div>
+</div>
+</section>
+<!-- Claims -->
+<section class="border-t border-surface-container-high pt-4">
+<h4 class="text-[11px] font-bold text-on-surface mb-2">Claims History</h4>
+<div class="p-3 border-l-2 border-error bg-error/5">
+<p class="text-xs font-bold text-error">Ransomware Event</p>
+<p class="text-[10px] text-slate-500 mt-1">₹45 Lakhs loss | 36 Months ago</p>
+</div>
+</section>
+</div>
+</aside>
+<!-- Center Panel: Agent Intelligence -->
+<section class="flex-1 bg-surface-container-low overflow-y-auto no-scrollbar flex flex-col">
+<!-- Intelligence Tabs -->
+<div class="px-8 mt-6">
+<div class="flex gap-8 border-b border-surface-container-high">
+<button class="pb-3 border-b-2 border-primary text-xs font-bold tracking-tight">OVERVIEW</button>
+<button class="pb-3 text-xs font-medium text-on-surface-variant hover:text-primary transition-colors">RISK ASSESSMENT</button>
+<button class="pb-3 text-xs font-medium text-on-surface-variant hover:text-primary transition-colors">COVERAGE STRUCTURING</button>
+<button class="pb-3 text-xs font-medium text-on-surface-variant hover:text-primary transition-colors">PRICING INTELLIGENCE</button>
+</div>
+</div>
+<div class="p-8 space-y-8"><!-- 1. RISK SNAPSHOT -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 shadow-sm">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.15em] mb-6 text-center">RISK SNAPSHOT</p>
+<div class="flex flex-col items-center justify-center">
+<div class="flex flex-col items-center">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter mb-1">Risk Score</span>
+<span class="text-6xl font-headline font-black">78<span class="text-2xl font-normal opacity-40">/100</span></span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<!-- 2. TOP LOSS DRIVERS -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 shadow-sm">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.15em] mb-4">TOP LOSS DRIVERS</p>
+<ol class="space-y-4">
+<li class="flex gap-3 items-start">
+<span class="flex items-center justify-center w-5 h-5 rounded-full bg-error-container text-error text-[10px] font-bold shrink-0">1</span>
+<span class="text-sm font-medium text-on-surface-variant">No MFA on privileged access</span>
+</li>
+<li class="flex gap-3 items-start">
+<span class="flex items-center justify-center w-5 h-5 rounded-full bg-error-container text-error text-[10px] font-bold shrink-0">2</span>
+<span class="text-sm font-medium text-on-surface-variant">Sensitive health data exposure (PII)</span>
+</li>
+<li class="flex gap-3 items-start">
+<span class="flex items-center justify-center w-5 h-5 rounded-full bg-error-container text-error text-[10px] font-bold shrink-0">3</span>
+<span class="text-sm font-medium text-on-surface-variant">Prior ransomware incident (2023)</span>
+</li>
+</ol>
+</div>
+<!-- 3. WHAT MOVES THE RISK -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 shadow-sm">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.15em] mb-4">WHAT MOVES THE RISK</p>
+<ul class="space-y-4">
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined text-teal-600 text-lg mt-0.5">trending_down</span>
+<div>
+<p class="text-sm font-medium">Implement MFA across all accounts</p>
+<p class="text-xs font-bold text-teal-600">-12 Risk Score</p>
+</div>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined text-teal-600 text-lg mt-0.5">trending_down</span>
+<div>
+<p class="text-sm font-medium">Conduct quarterly offline backup tests</p>
+<p class="text-xs font-bold text-teal-600">-5 Risk Score</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- Hero Intelligence Card -->
+<!-- AI Observation Callout -->
+<!-- Visual Metrics Grid -->
+<div class="grid grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-5 rounded-xl border-0 shadow-sm">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-4">Controls Maturity</p>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-teal-500 w-[65%]"></div>
+</div>
+<div class="flex justify-between mt-2">
+<span class="text-[10px] text-on-surface-variant">Baseline</span>
+<span class="text-[10px] font-bold">65%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl border-0 shadow-sm">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-4">Operational Stability</p>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-orange-400 w-[42%]"></div>
+</div>
+<div class="flex justify-between mt-2">
+<span class="text-[10px] text-on-surface-variant">Resilience</span>
+<span class="text-[10px] font-bold">42%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl border-0 shadow-sm">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-4">Threat Environment</p>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-error w-[88%]"></div>
+</div>
+<div class="flex justify-between mt-2">
+<span class="text-[10px] text-on-surface-variant">Volatility</span>
+<span class="text-[10px] font-bold text-error">CRITICAL</span>
+</div>
+</div>
+</div>
+<!-- AI Insights Narrative -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border-0 shadow-sm">
+<h3 class="font-headline font-bold text-lg mb-4">Agent Insights Narrative</h3>
+<div class="space-y-4 text-sm text-on-surface-variant leading-relaxed">
+<p>Based on the analysis of the <span class="font-bold text-on-surface">IT Audit Report (2023)</span> and the current healthcare landscape, ABC Healthcare represents a complex risk profile. While turnover is substantial at ₹250 Cr, the cybersecurity infrastructure is uneven.</p>
+<p>The <span class="text-error font-medium">prior ransomware incident</span> resulted in a ₹45 Lakh loss, which is relatively contained for their size, suggesting an effective recovery plan but a failure in initial perimeter defense. The current lack of MFA is the single largest technical liability.</p>
+<ul class="list-disc pl-5 space-y-2">
+<li>Policy Recommendation: Limit Cyber Extortion coverage to ₹5 Cr until MFA is verified.</li>
+<li>Referral Requirement: Total limit (₹40 Cr) exceeds individual authority level.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Panel: Decision & Actions -->
+<aside class="w-80 bg-surface border-l-0 p-6 flex flex-col">
+<h3 class="font-headline font-extrabold text-xs uppercase tracking-[0.15em] text-on-surface-variant mb-6">Decision Zone</h3>
+<div class="flex-1 space-y-6">
+<!-- Referral Box -->
+<div class="bg-surface-container-high p-5 rounded-xl border border-outline-variant/30">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-orange-600">assignment_late</span>
+<span class="text-sm font-bold">Referral Triggered</span>
+</div>
+<ul class="space-y-3">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-teal-600 text-[16px]" data-weight="fill">check_circle</span>
+<span class="text-[11px] text-on-surface-variant">Authority Limit (&gt; ₹25 Cr)</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-teal-600 text-[16px]" data-weight="fill">check_circle</span>
+<span class="text-[11px] text-on-surface-variant">Risk Band: High</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-teal-600 text-[16px]" data-weight="fill">check_circle</span>
+<span class="text-[11px] text-on-surface-variant">Approval Pack: Ready</span>
+</li>
+</ul>
+</div>
+<div class="space-y-3 pt-4">
+<button class="w-full py-4 bg-slate-200 text-slate-400 font-bold rounded-lg flex items-center justify-center gap-2 cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined">verified</span> ACCEPT CASE
+                        </button>
+<button class="w-full py-3 border border-primary text-primary font-bold rounded-lg flex items-center justify-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">edit_note</span> MODIFY &amp; RE-ASSESS
+                        </button>
+<button class="w-full py-3 bg-primary text-white font-bold rounded-lg flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">send</span> REFER FOR APPROVAL
+                        </button>
+<button class="w-full py-3 border border-error text-error font-bold rounded-lg flex items-center justify-center gap-2 hover:bg-error/5 transition-colors">
+<span class="material-symbols-outlined">block</span> DECLINE
+                        </button>
+</div>
+</div>
+<!-- Footer Card -->
+<div class="mt-auto bg-surface-container-low p-4 rounded-lg">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="professional corporate headshot of a senior underwriter in a dark suit with a focused expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSvJYzwOfvLP08cxxQydGGJorLu4dla95ro63z4YUWAuPSzmw7c-O0e-UDSqI41km38QxKkNwx39u6A9mBvO5ofrr2YG2KbSSLPGia7Qcmdi0FjJio8YFnJcl_ZAuXV0fFCHBnphVOQeteULbevjA3n4ed2mcNOXnP0BwgGH_SgLLY4rCw1brG0uQ_Fupt7DRw9TUlu2dEMKBTC4mfGaK2HBR-Tq4f5CjO6LNKzc5h4ttF_C1DFwwwwqTNuoMYN-csQ52DYCwJkUc"/>
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Assignee</p>
+<p class="text-xs font-bold text-on-surface">Vikram Rathore</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Bottom Dock (Collapsible) -->
+<footer class="fixed bottom-0 right-0 left-64 h-12 bg-slate-900 text-white flex items-center px-8 z-50">
+<div class="flex items-center gap-10">
+<button class="text-[10px] font-bold tracking-[0.1em] text-teal-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">notes</span> UW NOTES
+                </button>
+<button class="text-[10px] font-bold tracking-[0.1em] text-white opacity-60 hover:opacity-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">psychology</span> RATIONALE
+                </button>
+<button class="text-[10px] font-bold tracking-[0.1em] text-white opacity-60 hover:opacity-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">terminal</span> AGENT LOGS
+                </button>
+<button class="text-[10px] font-bold tracking-[0.1em] text-white opacity-60 hover:opacity-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">description</span> DOCUMENTS <span class="bg-teal-500/20 text-teal-400 px-1 rounded">4</span>
+</button>
+<button class="text-[10px] font-bold tracking-[0.1em] text-white opacity-60 hover:opacity-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">schedule</span> TIMELINE
+                </button>
+</div>
+<div class="ml-auto flex items-center gap-4">
+<span class="text-[9px] font-mono text-slate-500">SYSTEM STATUS: OPTIMAL</span>
+<span class="material-symbols-outlined text-sm text-slate-500 cursor-pointer">keyboard_arrow_up</span>
+</div>
+</footer>
+</main>
+</body></html>
