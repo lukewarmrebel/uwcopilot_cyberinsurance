@@ -1144,9 +1144,19 @@ export default function CaseWorkspace() {
                                    <p className="text-[10px] text-slate-600 italic leading-relaxed border-l-2 border-error pl-3 mb-2 bg-error/[0.02] py-1">"...secured via AD credentials only. Hardware tokens not fully rolled out."</p>
                                    <p className="text-[9px] text-slate-500 font-mono flex items-center gap-1"><span className="material-symbols-outlined text-[10px]">article</span> Audit Report [Pg 14]</p>
                                 </div>
-                                <div className="px-4 py-2.5 border-t border-slate-100 bg-slate-50/30 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                   <button onClick={() => setActiveDeepDive({title: 'Missing MFA on VPN', source: 'Audit Report [Pg 14]', evidence: 'Remote access secured via Active Directory credentials only. Hardware tokens not fully rolled out.', confidence: 98})} className="text-[9px] font-bold bg-slate-800 text-white px-3 py-1.5 rounded-full hover:bg-slate-900 transition-colors flex items-center gap-1 shadow-sm"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
-                                </div>
+                                 <div className="px-4 py-2.5 border-t border-slate-100 bg-slate-50/30 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button onClick={() => setActiveDeepDive({
+                                       title: 'Missing MFA on VPN', 
+                                       mainSource: 'Audit Report',
+                                       confidence: 98,
+                                       sources: [
+                                          { name: 'Security Audit [2024]', page: 14, excerpt: 'Remote access secured via Active Directory credentials only. Hardware tokens not fully rolled out. MFA enrollment remains at 40% for VPN concentrators.', type: 'AUDIT' },
+                                          { name: 'Internal Wiki', page: 2, excerpt: 'VPN access guidelines: "All users must use AD credentials." (Last updated 2021). No mention of mandatory MFA.', type: 'DOC' }
+                                       ],
+                                       pageMap: [1, 2, 8, 14, 15],
+                                       activePage: 14
+                                    })} className="text-[9px] font-bold bg-slate-800 text-white px-3 py-1.5 rounded-full hover:bg-slate-900 transition-colors flex items-center gap-1 shadow-sm"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
+                                 </div>
                              </div>
 
                              <div className="bg-white rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm group hover:border-error/30 transition-all hover:shadow-md">
@@ -1165,7 +1175,17 @@ export default function CaseWorkspace() {
                                    <p className="text-[9px] text-slate-500 font-mono flex items-center gap-1"><span className="material-symbols-outlined text-[10px]">radar</span> EASM Live Scan</p>
                                 </div>
                                 <div className="px-4 py-2.5 border-t border-slate-100 bg-slate-50/30 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                   <button onClick={() => setActiveDeepDive({title: 'Open RDP Port (3389)', source: 'EASM Live Scan', evidence: 'Target: abc-healthcare.in | Subnet: 103.45.xx.xx. Port 3389 state: OPEN.', confidence: 100})} className="text-[9px] font-bold bg-slate-800 text-white px-3 py-1.5 rounded-full hover:bg-slate-900 transition-colors flex items-center gap-1 shadow-sm"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
+                                   <button onClick={() => setActiveDeepDive({
+                                       title: "Open RDP Port (3389)", 
+                                       mainSource: "EASM Scan",
+                                       confidence: 100,
+                                       sources: [
+                                          { name: "External Attack Surface Map", page: 1, excerpt: "Target: 103.45.xx.xx. Service: ms-wbt-server (RDP). Port: 3389. State: OPEN. Version: Windows Server 2016.", type: "SCAN" },
+                                          { name: "IT Assets Inventory", page: 5, excerpt: "Asset ID: SRV-PROD-01. IP: 103.45.xx.xx. Status: Production. Notes: \"External access disabled\". (CONFLICT DETECTED)", type: "INVENTORY" }
+                                       ],
+                                       pageMap: [1, 2, 3, 5, 8],
+                                       activePage: 1
+                                    })} className="text-[9px] font-bold bg-slate-800 text-white px-3 py-1.5 rounded-full hover:bg-slate-900 transition-colors flex items-center gap-1 shadow-sm"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
                                 </div>
                              </div>
                           </div>
@@ -1204,7 +1224,17 @@ export default function CaseWorkspace() {
                                    <p className="text-[9px] text-slate-500 font-mono flex items-center gap-1"><span className="material-symbols-outlined text-[10px]">merge</span> Multi-Doc Cross Reference</p>
                                 </div>
                                 <div className="px-4 py-2.5 border-t border-slate-100 bg-slate-50/30 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                   <button onClick={() => setActiveDeepDive({title: 'Backup Verification Conflict', source: 'Multi-Doc Cross Ref', evidence: 'Questionnaire Ans #12 (Yes) vs IT Audit Section 9.3 (FAIL: Restoration dry-run not conducted in current period).', confidence: 85})} className="text-[9px] font-bold bg-slate-800 text-white px-3 py-1.5 rounded-full hover:bg-slate-900 transition-colors flex items-center gap-1 shadow-sm"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
+                                   <button onClick={() => setActiveDeepDive({
+                                       title: "Backup Verification Conflict", 
+                                       mainSource: "Multi-Doc Cross Ref",
+                                       confidence: 85,
+                                       sources: [
+                                          { name: "Proposal Form", page: 8, excerpt: "Q12: \"Do you maintain offline backups?\" Ans: YES. Frequency: Daily. Verification: Weekly.", type: "PROPOSAL" },
+                                          { name: "IT Audit Report", page: 14, excerpt: "Section 9.3: \"Recovery testing for offline assets was last conducted in 2021. Current validation status: PENDING/EXPIRED.\"", type: "AUDIT" }
+                                       ],
+                                       pageMap: [4, 8, 12, 14, 18],
+                                       activePage: 8
+                                    })} className="text-[9px] font-bold bg-slate-800 text-white px-3 py-1.5 rounded-full hover:bg-slate-900 transition-colors flex items-center gap-1 shadow-sm"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
                                 </div>
                              </div>
                           </div>
@@ -1234,7 +1264,17 @@ export default function CaseWorkspace() {
                                    <p className="text-[9px] text-slate-500 mt-2 font-mono flex items-center gap-1"><span className="material-symbols-outlined text-[10px]">text_fields</span> Linguistic Analysis</p>
                                 </div>
                                 <div className="px-4 py-2.5 border-t border-slate-100 bg-slate-50/30 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                   <button onClick={() => setActiveDeepDive({title: 'Integrity: Copy-Paste Detection', source: 'Linguistic Analysis', evidence: 'Phrase repeated verbatim 12 times across Sections 4, 7, and 9.', confidence: 92})} className="text-[9px] font-bold bg-slate-800 text-white px-3 py-1.5 rounded-full hover:bg-slate-900 transition-colors flex items-center gap-1 shadow-sm"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
+                                   <button onClick={() => setActiveDeepDive({
+                                       title: "Questionnaire Anomalies", 
+                                       mainSource: "Linguistic Analysis",
+                                       confidence: 92,
+                                       sources: [
+                                          { name: "Proposal Form (Section 4)", page: 7, excerpt: "\"The organization maintains a robust perimeter security model with multi-layered firewalls...\"", type: "PROPOSAL" },
+                                          { name: "Proposal Form (Section 9)", page: 12, excerpt: "\"The organization maintains a robust perimeter security model with multi-layered firewalls...\" (Identical verbatim match)", type: "PROPOSAL" }
+                                       ],
+                                       pageMap: [1, 7, 12, 15],
+                                       activePage: 7
+                                    })} className="text-[9px] font-bold bg-slate-800 text-white px-3 py-1.5 rounded-full hover:bg-slate-900 transition-colors flex items-center gap-1 shadow-sm"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
                                 </div>
                              </div>
 
@@ -1263,7 +1303,17 @@ export default function CaseWorkspace() {
                                    <p className="text-[9px] text-slate-500 mt-2 font-mono flex items-center gap-1"><span className="material-symbols-outlined text-[10px]">fingerprint</span> File Metadata Extract</p>
                                 </div>
                                 <div className="px-4 py-2.5 border-t border-slate-100 bg-slate-50/30 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                   <button onClick={() => setActiveDeepDive({title: 'Integrity: Metadata Mismatch', source: 'Forensic Metadata', evidence: 'Signed Date: 2024-04-01 vs Encoded System Date: 2023-11-15. Submission is likely backdated.', confidence: 100})} className="text-[9px] font-bold bg-slate-800 text-white px-3 py-1.5 rounded-full hover:bg-slate-900 transition-colors flex items-center gap-1 shadow-sm"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
+                                   <button onClick={() => setActiveDeepDive({
+                                       title: "Metadata Mismatch", 
+                                       mainSource: "Forensic Extraction",
+                                       confidence: 100,
+                                       sources: [
+                                          { name: "Signed Proposal PDF", page: 1, excerpt: "Signature Date Field: 2024-04-01. (User visible)", type: "DOC" },
+                                          { name: "XMP Metadata Header", page: 1, excerpt: "xmp:CreateDate=\"2023-11-15T11:42:00\". xmp:ModifyDate=\"2023-11-15T12:10:00\". (Encoded timestamp)", type: "FORENSIC" }
+                                       ],
+                                       pageMap: [1],
+                                       activePage: 1
+                                    })} className="text-[9px] font-bold bg-slate-800 text-white px-3 py-1.5 rounded-full hover:bg-slate-900 transition-colors flex items-center gap-1 shadow-sm"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
                                 </div>
                              </div>
                           </div>
@@ -1369,20 +1419,107 @@ export default function CaseWorkspace() {
             </div>
 
             <div className="flex-1 flex overflow-hidden">
-              {/* Left: Document Evidence */}
-              <div className="flex-1 border-r border-outline-variant/30 p-8 overflow-y-auto bg-slate-100/50">
+              {/* Left sidebar: Page Mapping (Thumbnail Strip) */}
+              <div className="w-20 border-r border-outline-variant/30 flex flex-col bg-slate-50 overflow-hidden">
+                <div className="p-3 border-b border-outline-variant/20 flex flex-col items-center gap-1">
+                  <span className="material-symbols-outlined text-[14px] text-slate-400">map</span>
+                  <span className="text-[8px] font-black text-slate-400 uppercase">Map</span>
+                </div>
+                <div className="flex-1 overflow-y-auto px-2 py-4 space-y-3 scrollbar-none">
+                  {(activeDeepDive.pageMap || [1, 2, 3, 4, 5]).map((pg: number) => (
+                    <button 
+                      key={pg} 
+                      className={`w-full aspect-[3/4] rounded border-2 transition-all flex flex-col items-center justify-center gap-0.5 relative group ${pg === activeDeepDive.activePage ? 'bg-white border-primary shadow-md' : 'bg-slate-100 border-slate-200 hover:border-slate-300'}`}
+                    >
+                      <div className={`w-full h-1/2 bg-slate-200 rounded-t-sm mb-auto ${pg === activeDeepDive.activePage ? 'bg-primary/10' : ''}`}></div>
+                      <span className="text-[10px] font-bold text-slate-500">{pg}</span>
+                      {activeDeepDive.activePage === pg && (
+                        <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-error ring-2 ring-white"></span>
+                      )}
+                      <div className="absolute inset-0 bg-primary/0 opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Center: Document Evidence / Comparative Analysis */}
+              <div className="flex-1 p-8 overflow-y-auto bg-slate-100/30">
                 <div className="flex items-center justify-between mb-6">
-                  <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Document Evidence</p>
-                  <span className="text-[9px] px-2 py-0.5 bg-white border border-slate-200 rounded font-bold uppercase">{activeDeepDive.source}</span>
+                  <div>
+                     <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Source Comparison Hub</p>
+                     <div className="flex items-center gap-2">
+                        <span className="text-[9px] px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded font-bold uppercase">{activeDeepDive.mainSource || activeDeepDive.source}</span>
+                        <span className="text-[9px] text-slate-400 font-medium">Auto-Linked Analysis</span>
+                     </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Confidence Metrics</p>
+                     <div className="flex items-center gap-2 bg-white px-3 py-1 rounded-full border border-outline-variant/30 shadow-sm">
+                        <div className="w-2 h-2 rounded-full bg-teal-500"></div>
+                        <span className="text-[10px] font-black text-slate-700">{activeDeepDive.confidence}%</span>
+                     </div>
+                  </div>
                 </div>
-                <div className="bg-white p-8 rounded-xl border border-outline-variant/50 shadow-sm relative">
-                   <div className="absolute top-0 left-0 w-1 h-full bg-primary/20"></div>
-                   <p className="text-sm text-slate-700 leading-loose italic font-serif">
-                      {activeDeepDive.evidence}
-                   </p>
+
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                   {(activeDeepDive.sources || [{ name: activeDeepDive.source, page: activeDeepDive.activePage || '?', excerpt: activeDeepDive.evidence, type: 'DOC' }]).map((src: any, idx: number) => (
+                      <div key={idx} className="bg-white rounded-xl border border-outline-variant/40 shadow-sm overflow-hidden flex flex-col">
+                        <div className="px-4 py-2 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
+                           <div className="flex items-center gap-2">
+                              <span className="material-symbols-outlined text-[14px] text-slate-400">
+                                 {src.type === 'AUDIT' ? 'fact_check' : src.type === 'SCAN' ? 'radar' : 'article'}
+                              </span>
+                              <span className="text-[10px] font-black text-slate-600 uppercase tracking-wide">{src.name}</span>
+                           </div>
+                           <span className="text-[9px] font-bold text-slate-400">PAGE {src.page}</span>
+                        </div>
+                        <div className="p-6 relative">
+                           <div className={`absolute top-0 left-0 w-1 h-full ${idx === 0 ? 'bg-primary/30' : 'bg-amber-500/30'}`}></div>
+                           <p className="text-sm text-slate-700 leading-relaxed italic font-serif">
+                              "{src.excerpt}"
+                           </p>
+                        </div>
+                        <div className="px-4 py-2 border-t border-slate-50 mt-auto flex items-center justify-between">
+                           <div className="flex gap-1">
+                              <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                              <div className="w-1.5 h-1.5 rounded-full bg-teal-500/30"></div>
+                              <div className="w-1.5 h-1.5 rounded-full bg-teal-500/30"></div>
+                           </div>
+                           <button className="text-[9px] font-bold text-primary hover:underline">Download Metadata</button>
+                        </div>
+                      </div>
+                   ))}
                 </div>
+
+                {/* Evidence Hub (Reference Documents) */}
+                <div className="mt-8">
+                   <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">Reference Document Hub</p>
+                   <div className="grid grid-cols-4 gap-4">
+                      {[
+                        { title: 'Proposal Form', type: 'PDF', date: '2024-04-01' },
+                        { title: 'IT Audit report', type: 'PDF', date: '2024-03-15' },
+                        { title: 'Forensic Scan', type: 'RAW', date: '2024-04-02' },
+                        { title: 'Company Wiki', type: 'HTML', date: '2021-11-20' }
+                      ].map((doc, i) => (
+                        <div key={i} className="bg-white p-3 rounded-xl border border-outline-variant/30 hover:shadow-md transition-all cursor-pointer group">
+                           <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 rounded bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                                 <span className="material-symbols-outlined text-[18px]">
+                                    {doc.type === 'PDF' ? 'picture_as_pdf' : doc.type === 'RAW' ? 'terminal' : 'language'}
+                                 </span>
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                 <p className="text-[10px] font-bold text-slate-700 truncate">{doc.title}</p>
+                                 <p className="text-[8px] text-slate-400 uppercase">{doc.date}</p>
+                              </div>
+                           </div>
+                        </div>
+                      ))}
+                   </div>
+                </div>
+
                 <div className="mt-8 space-y-4">
-                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Metadata Attribution</p>
+                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Stability & Fact Confidence</p>
                    <div className="grid grid-cols-2 gap-4">
                       <div className="bg-white p-4 rounded-lg border border-outline-variant/30">
                          <p className="text-[9px] text-slate-400 uppercase font-bold mb-1">OCR Stability</p>
@@ -1394,7 +1531,7 @@ export default function CaseWorkspace() {
                          </div>
                       </div>
                       <div className="bg-white p-4 rounded-lg border border-outline-variant/30">
-                         <p className="text-[9px] text-slate-400 uppercase font-bold mb-1">Fact Confidence</p>
+                         <p className="text-[9px] text-slate-400 uppercase font-bold mb-1">Human-in-the-loop confidence</p>
                          <div className="flex items-center gap-2">
                             <div className="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
                                <div className="bg-primary h-full" style={{width: `${activeDeepDive.confidence}%`}}></div>
