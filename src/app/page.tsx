@@ -58,7 +58,7 @@ export default function Dashboard() {
     <div className="flex-1 flex flex-col space-y-10 p-10 max-w-[1600px]">
       <section className="flex flex-col md:flex-row justify-between items-end gap-6 pt-6">
         <div>
-          <h1 className="text-4xl font-extrabold tracking-tight text-primary leading-tight">Good morning, Pranav</h1>
+          <h1 className="text-4xl font-extrabold tracking-tight text-primary leading-tight">Hello Alex</h1>
           <div className="flex items-center gap-4 mt-2">
             <span className="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-widest">Cyber Underwriter</span>
             <div className="flex items-center gap-2 text-on-surface-variant text-sm">

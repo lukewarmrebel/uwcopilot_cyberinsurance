@@ -1,9 +1,19 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+// Routes that should render without the AppShell chrome
+const SHELL_EXCLUDED_ROUTES = ["/landing"];
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  // Passthrough for standalone pages
+  if (SHELL_EXCLUDED_ROUTES.includes(pathname)) {
+    return <>{children}</>;
+  }
 
   return (
     <div className="bg-surface text-on-background min-h-screen flex">
@@ -65,7 +75,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           <div className="flex items-center gap-3 px-2 mt-4">
             <img alt="Underwriter Portrait" className="w-10 h-10 rounded-full border border-slate-700 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfyvK_G1CYMLTQ_Sk5eGE0kfzo1e00F3YkA7ATrTbaK8xaGwfuKYCgj4M8XFxYU-4BqO6r9BLyjHCfi5icJoprVDuI25n7xwJI5-QV0SgTDU30knYYlgZZdJrCVtVvOtgFTXLNqtzWkqjTcQOsWQX2TTEdWmkF9OMO6BvhcL8nycq7grc8gtWYMG3giITjnSZiJgGdzrBi88b3v0GI_gTFsi8JvBqk--XUQBu1X_i5waR-iMZLhzCC9e89UMq-6vX_qvA4PXV96no"/>
             <div className="overflow-hidden">
-              <p className="text-white text-sm font-semibold truncate">Pranav</p>
+              <p className="text-white text-sm font-semibold truncate">Alex</p>
               <p className="text-teal-400 text-[10px] uppercase tracking-tighter">Cyber Underwriter</p>
             </div>
           </div>
