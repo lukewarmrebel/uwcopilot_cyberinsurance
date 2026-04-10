@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 // Routes that should render without the AppShell chrome
-const SHELL_EXCLUDED_ROUTES = ["/landing"];
+const SHELL_EXCLUDED_ROUTES = ["/"];
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -30,7 +30,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           </div>
         </div>
         <nav className="flex-1 space-y-1">
-          <Link className="flex items-center gap-3 px-4 py-3 bg-slate-800 text-teal-400 border-r-4 border-teal-400 transition-all duration-200 translate-x-1" href="/">
+          <Link className="flex items-center gap-3 px-4 py-3 bg-slate-800 text-teal-400 border-r-4 border-teal-400 transition-all duration-200 translate-x-1" href="/dashboard">
             <span className="material-symbols-outlined">dashboard</span>
             <span className="text-xs font-semibold uppercase tracking-wider font-label">Dashboard</span>
           </Link>
