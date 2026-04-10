@@ -1119,144 +1119,151 @@ export default function CaseWorkspace() {
                  </div>
               )}
               {activeDockTab === "FLAGS" && (
-                 <div className="h-full overflow-y-auto no-scrollbar">
-                    <div className="grid grid-cols-3 h-full divide-x divide-white/5">
-                       <div className="flex flex-col">
-                          <div className="px-5 py-3 flex items-center gap-2 bg-error/10 border-b border-error/20 sticky top-0">
+                 <div className="h-full overflow-y-auto bg-slate-50/50 scrollbar-thin scrollbar-thumb-slate-200">
+                    <div className="grid grid-cols-3 h-full divide-x divide-slate-200">
+                       {/* Column 1: Core Cyber Risks */}
+                       <div className="flex flex-col bg-slate-50/30">
+                          <div className="px-5 py-3 flex items-center gap-2 bg-white border-b border-error/20 sticky top-0 z-10 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
                              <span className="material-symbols-outlined text-error text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>shield_lock</span>
                              <p className="text-[10px] font-black text-error uppercase tracking-[0.2em] flex-1">Core Cyber Risks</p>
-                             <span className="text-[9px] font-bold bg-error/20 text-error px-1.5 py-0.5 rounded border border-error/20">2 Flags</span>
+                             <span className="text-[9px] font-bold bg-error text-white px-1.5 py-0.5 rounded border border-error shadow-sm">2 Flags</span>
                           </div>
-                          <div className="p-4 space-y-3">
-                             <div className="bg-white/5 rounded-xl overflow-hidden border border-white/5 group hover:border-error/30 transition-colors">
-                                <div className="px-4 py-3 flex items-start justify-between gap-2 border-b border-white/5">
+                          <div className="p-4 space-y-4">
+                             <div className="bg-white rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm group hover:border-error/30 transition-all hover:shadow-md">
+                                <div className="px-4 py-3 flex items-start justify-between gap-2 border-b border-slate-100 bg-slate-50/40">
                                    <div>
-                                      <p className="text-xs font-bold text-white leading-tight">Missing MFA on VPN</p>
-                                      <span className="text-[8px] font-black text-error uppercase tracking-widest">Critical</span>
+                                      <p className="text-xs font-bold text-slate-900 leading-tight">Missing MFA on VPN</p>
+                                      <span className="text-[8px] font-black text-error uppercase tracking-widest px-1 bg-error/10 rounded">Critical</span>
                                    </div>
-                                   <div className="flex items-center gap-1 bg-teal-500/10 px-2 py-0.5 rounded-full border border-teal-500/20 shrink-0">
-                                      <span className="material-symbols-outlined text-[10px] text-teal-400" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
-                                      <span className="text-[8px] font-black text-teal-400">98%</span>
+                                   <div className="flex items-center gap-1 bg-teal-500/10 px-2 py-0.5 rounded-full border border-teal-500/20 shrink-0 shadow-sm">
+                                      <span className="material-symbols-outlined text-[10px] text-teal-600" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+                                      <span className="text-[8px] font-black text-teal-600">98%</span>
                                    </div>
                                 </div>
                                 <div className="px-4 py-3">
-                                   <p className="text-[10px] text-slate-400 italic leading-relaxed border-l-2 border-error/50 pl-3">"...secured via AD credentials only. Hardware tokens not fully rolled out."</p>
-                                   <p className="text-[9px] text-slate-500 mt-2 font-mono flex items-center gap-1"><span className="material-symbols-outlined text-[10px]">article</span> Audit Report [Pg 14]</p>
+                                   <p className="text-[10px] text-slate-600 italic leading-relaxed border-l-2 border-error pl-3 mb-2 bg-error/[0.02] py-1">"...secured via AD credentials only. Hardware tokens not fully rolled out."</p>
+                                   <p className="text-[9px] text-slate-500 font-mono flex items-center gap-1"><span className="material-symbols-outlined text-[10px]">article</span> Audit Report [Pg 14]</p>
                                 </div>
-                                <div className="px-4 py-2.5 border-t border-white/5 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                   <button onClick={() => setActiveDeepDive({title: 'Missing MFA on VPN', source: 'Audit Report [Pg 14]', evidence: 'Remote access secured via Active Directory credentials only. Hardware tokens not fully rolled out.', confidence: 98})} className="text-[9px] font-bold bg-primary/80 text-white px-3 py-1 rounded-full hover:bg-primary transition-colors flex items-center gap-1"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
+                                <div className="px-4 py-2.5 border-t border-slate-100 bg-slate-50/30 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                   <button onClick={() => setActiveDeepDive({title: 'Missing MFA on VPN', source: 'Audit Report [Pg 14]', evidence: 'Remote access secured via Active Directory credentials only. Hardware tokens not fully rolled out.', confidence: 98})} className="text-[9px] font-bold bg-slate-800 text-white px-3 py-1.5 rounded-full hover:bg-slate-900 transition-colors flex items-center gap-1 shadow-sm"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
                                 </div>
                              </div>
-                             <div className="bg-white/5 rounded-xl overflow-hidden border border-white/5 group hover:border-error/30 transition-colors">
-                                <div className="px-4 py-3 flex items-start justify-between gap-2 border-b border-white/5">
+
+                             <div className="bg-white rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm group hover:border-error/30 transition-all hover:shadow-md">
+                                <div className="px-4 py-3 flex items-start justify-between gap-2 border-b border-slate-100 bg-slate-50/40">
                                    <div>
-                                      <p className="text-xs font-bold text-white leading-tight">Open RDP Port (3389)</p>
-                                      <span className="text-[8px] font-black text-error uppercase tracking-widest">Critical</span>
+                                      <p className="text-xs font-bold text-slate-900 leading-tight">Open RDP Port (3389)</p>
+                                      <span className="text-[8px] font-black text-error uppercase tracking-widest px-1 bg-error/10 rounded">Critical</span>
                                    </div>
-                                   <div className="flex items-center gap-1 bg-teal-500/10 px-2 py-0.5 rounded-full border border-teal-500/20 shrink-0">
-                                      <span className="material-symbols-outlined text-[10px] text-teal-400" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
-                                      <span className="text-[8px] font-black text-teal-400">100%</span>
+                                   <div className="flex items-center gap-1 bg-teal-500/10 px-2 py-0.5 rounded-full border border-teal-500/20 shrink-0 shadow-sm">
+                                      <span className="material-symbols-outlined text-[10px] text-teal-600" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+                                      <span className="text-[8px] font-black text-teal-600">100%</span>
                                    </div>
                                 </div>
                                 <div className="px-4 py-3">
-                                   <p className="text-[10px] text-slate-400 italic leading-relaxed border-l-2 border-error/50 pl-3">"Scanned: 103.45.xx.xx. Port 3389 explicitly found exposed to public internet."</p>
-                                   <p className="text-[9px] text-slate-500 mt-2 font-mono flex items-center gap-1"><span className="material-symbols-outlined text-[10px]">radar</span> EASM Live Scan</p>
+                                   <p className="text-[10px] text-slate-600 italic leading-relaxed border-l-2 border-error pl-3 mb-2 bg-error/[0.02] py-1">"Scanned: 103.45.xx.xx. Port 3389 explicitly found exposed to public internet."</p>
+                                   <p className="text-[9px] text-slate-500 font-mono flex items-center gap-1"><span className="material-symbols-outlined text-[10px]">radar</span> EASM Live Scan</p>
                                 </div>
-                                <div className="px-4 py-2.5 border-t border-white/5 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                   <button onClick={() => setActiveDeepDive({title: 'Open RDP Port (3389)', source: 'EASM Live Scan', evidence: 'Target: abc-healthcare.in | Subnet: 103.45.xx.xx. Port 3389 state: OPEN.', confidence: 100})} className="text-[9px] font-bold bg-primary/80 text-white px-3 py-1 rounded-full hover:bg-primary transition-colors flex items-center gap-1"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
+                                <div className="px-4 py-2.5 border-t border-slate-100 bg-slate-50/30 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                   <button onClick={() => setActiveDeepDive({title: 'Open RDP Port (3389)', source: 'EASM Live Scan', evidence: 'Target: abc-healthcare.in | Subnet: 103.45.xx.xx. Port 3389 state: OPEN.', confidence: 100})} className="text-[9px] font-bold bg-slate-800 text-white px-3 py-1.5 rounded-full hover:bg-slate-900 transition-colors flex items-center gap-1 shadow-sm"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
                                 </div>
                              </div>
                           </div>
                        </div>
-                       <div className="flex flex-col">
-                          <div className="px-5 py-3 flex items-center gap-2 bg-amber-500/10 border-b border-amber-500/20 sticky top-0">
-                             <span className="material-symbols-outlined text-amber-400 text-sm">compare_arrows</span>
-                             <p className="text-[10px] font-black text-amber-400 uppercase tracking-[0.2em] flex-1">Document Discrepancies</p>
-                             <span className="text-[9px] font-bold bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded border border-amber-500/20">1 Flag</span>
+
+                       {/* Column 2: Document Discrepancies */}
+                       <div className="flex flex-col bg-slate-50/30">
+                          <div className="px-5 py-3 flex items-center gap-2 bg-white border-b border-amber-500/20 sticky top-0 z-10 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+                             <span className="material-symbols-outlined text-amber-500 text-sm">compare_arrows</span>
+                             <p className="text-[10px] font-black text-amber-600 uppercase tracking-[0.2em] flex-1">Document Discrepancies</p>
+                             <span className="text-[9px] font-bold bg-amber-500 text-white px-1.5 py-0.5 rounded border border-amber-500 shadow-sm">1 Flag</span>
                           </div>
-                          <div className="p-4 space-y-3">
-                             <div className="bg-white/5 rounded-xl overflow-hidden border border-white/5 group hover:border-amber-500/30 transition-colors">
-                                <div className="px-4 py-3 flex items-start justify-between gap-2 border-b border-white/5">
+                          <div className="p-4 space-y-4">
+                             <div className="bg-white rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm group hover:border-amber-500/30 transition-all hover:shadow-md">
+                                <div className="px-4 py-3 flex items-start justify-between gap-2 border-b border-slate-100 bg-slate-50/40">
                                    <div>
-                                      <p className="text-xs font-bold text-white leading-tight">Backup Verification Conflict</p>
-                                      <span className="text-[8px] font-black text-amber-400 uppercase tracking-widest">High</span>
+                                      <p className="text-xs font-bold text-slate-900 leading-tight">Backup Verification Conflict</p>
+                                      <span className="text-[8px] font-black text-amber-600 uppercase tracking-widest px-1 bg-amber-500/10 rounded">High</span>
                                    </div>
-                                   <div className="flex items-center gap-1 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20 shrink-0">
-                                      <span className="material-symbols-outlined text-[10px] text-amber-400" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
-                                      <span className="text-[8px] font-black text-amber-400">85%</span>
+                                   <div className="flex items-center gap-1 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20 shrink-0 shadow-sm">
+                                      <span className="material-symbols-outlined text-[10px] text-amber-600" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+                                      <span className="text-[8px] font-black text-amber-600">85%</span>
                                    </div>
                                 </div>
                                 <div className="px-4 py-3">
-                                   <div className="grid grid-cols-2 gap-2 mb-2">
-                                      <div className="bg-teal-500/10 border border-teal-500/20 p-2 rounded-lg">
-                                         <p className="text-[8px] font-black text-teal-400 uppercase tracking-widest mb-1">Proposal Form</p>
-                                         <p className="text-[10px] text-slate-300 italic">"Yes, daily offline backups."</p>
+                                   <div className="grid grid-cols-2 gap-2 mb-3">
+                                      <div className="bg-teal-500/5 border border-teal-500/20 p-2 rounded-lg">
+                                         <p className="text-[8px] font-black text-teal-600 uppercase tracking-widest mb-1">Proposal Form</p>
+                                         <p className="text-[10px] text-slate-600 italic">"Yes, daily offline backups."</p>
                                       </div>
-                                      <div className="bg-error/10 border border-error/20 p-2 rounded-lg">
+                                      <div className="bg-error/5 border border-error/20 p-2 rounded-lg">
                                          <p className="text-[8px] font-black text-error uppercase tracking-widest mb-1">Audit Report</p>
-                                         <p className="text-[10px] text-slate-300 italic">"No restore tests since 2021."</p>
+                                         <p className="text-[10px] text-slate-600 italic">"No restore tests since 2021."</p>
                                       </div>
                                    </div>
                                    <p className="text-[9px] text-slate-500 font-mono flex items-center gap-1"><span className="material-symbols-outlined text-[10px]">merge</span> Multi-Doc Cross Reference</p>
                                 </div>
-                                <div className="px-4 py-2.5 border-t border-white/5 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                   <button onClick={() => setActiveDeepDive({title: 'Backup Verification Conflict', source: 'Multi-Doc Cross Ref', evidence: 'Questionnaire Ans #12 (Yes) vs IT Audit Section 9.3 (FAIL: Restoration dry-run not conducted in current period).', confidence: 85})} className="text-[9px] font-bold bg-primary/80 text-white px-3 py-1 rounded-full hover:bg-primary transition-colors flex items-center gap-1"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
+                                <div className="px-4 py-2.5 border-t border-slate-100 bg-slate-50/30 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                   <button onClick={() => setActiveDeepDive({title: 'Backup Verification Conflict', source: 'Multi-Doc Cross Ref', evidence: 'Questionnaire Ans #12 (Yes) vs IT Audit Section 9.3 (FAIL: Restoration dry-run not conducted in current period).', confidence: 85})} className="text-[9px] font-bold bg-slate-800 text-white px-3 py-1.5 rounded-full hover:bg-slate-900 transition-colors flex items-center gap-1 shadow-sm"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
                                 </div>
                              </div>
                           </div>
                        </div>
-                       <div className="flex flex-col">
-                          <div className="px-5 py-3 flex items-center gap-2 bg-purple-500/10 border-b border-purple-500/20 sticky top-0">
-                             <span className="material-symbols-outlined text-purple-400 text-sm">content_paste_search</span>
-                             <p className="text-[10px] font-black text-purple-400 uppercase tracking-[0.2em] flex-1">Submission Integrity</p>
-                             <span className="text-[9px] font-bold bg-purple-500/20 text-purple-400 px-1.5 py-0.5 rounded border border-purple-500/20">2 Flags</span>
+
+                       {/* Column 3: Submission Integrity */}
+                       <div className="flex flex-col bg-slate-50/30">
+                          <div className="px-5 py-3 flex items-center gap-2 bg-white border-b border-purple-500/20 sticky top-0 z-10 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+                             <span className="material-symbols-outlined text-purple-500 text-sm">content_paste_search</span>
+                             <p className="text-[10px] font-black text-purple-600 uppercase tracking-[0.2em] flex-1">Submission Integrity</p>
+                             <span className="text-[9px] font-bold bg-purple-500 text-white px-1.5 py-0.5 rounded border border-purple-500 shadow-sm">2 Flags</span>
                           </div>
-                          <div className="p-4 space-y-3">
-                             <div className="bg-white/5 rounded-xl overflow-hidden border border-white/5 group hover:border-purple-400/30 transition-colors">
-                                <div className="px-4 py-3 flex items-start justify-between gap-2 border-b border-white/5">
+                          <div className="p-4 space-y-4">
+                             <div className="bg-white rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm group hover:border-purple-400/30 transition-all hover:shadow-md">
+                                <div className="px-4 py-3 flex items-start justify-between gap-2 border-b border-slate-100 bg-slate-50/40">
                                    <div>
-                                      <p className="text-xs font-bold text-white leading-tight">Questionnaire Anomalies</p>
-                                      <span className="text-[8px] font-black text-purple-400 uppercase tracking-widest">Suspicious</span>
+                                      <p className="text-xs font-bold text-slate-900 leading-tight">Questionnaire Anomalies</p>
+                                      <span className="text-[8px] font-black text-purple-600 uppercase tracking-widest px-1 bg-purple-500/10 rounded">Suspicious</span>
                                    </div>
-                                   <div className="flex items-center gap-1 bg-purple-500/10 px-2 py-0.5 rounded-full border border-purple-500/20 shrink-0">
-                                      <span className="material-symbols-outlined text-[10px] text-purple-400" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
-                                      <span className="text-[8px] font-black text-purple-400">92%</span>
+                                   <div className="flex items-center gap-1 bg-purple-500/10 px-2 py-0.5 rounded-full border border-purple-500/20 shrink-0 shadow-sm">
+                                      <span className="material-symbols-outlined text-[10px] text-purple-600" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+                                      <span className="text-[8px] font-black text-purple-600">92%</span>
                                    </div>
                                 </div>
                                 <div className="px-4 py-3">
-                                   <p className="text-[10px] text-slate-400 italic leading-relaxed border-l-2 border-purple-500/50 pl-3">"Identical copy-paste answers detected across Sections 4, 7, and 9 (Control Maturity)."</p>
+                                   <p className="text-[10px] text-slate-600 italic leading-relaxed border-l-2 border-purple-500 pl-3 mb-2 bg-purple-500/[0.02] py-1">"Identical copy-paste answers detected across Sections 4, 7, and 9 (Control Maturity)."</p>
                                    <p className="text-[9px] text-slate-500 mt-2 font-mono flex items-center gap-1"><span className="material-symbols-outlined text-[10px]">text_fields</span> Linguistic Analysis</p>
                                 </div>
-                                <div className="px-4 py-2.5 border-t border-white/5 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                   <button onClick={() => setActiveDeepDive({title: 'Integrity: Copy-Paste Detection', source: 'Linguistic Analysis', evidence: 'Phrase repeated verbatim 12 times across Sections 4, 7, and 9.', confidence: 92})} className="text-[9px] font-bold bg-primary/80 text-white px-3 py-1 rounded-full hover:bg-primary transition-colors flex items-center gap-1"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
+                                <div className="px-4 py-2.5 border-t border-slate-100 bg-slate-50/30 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                   <button onClick={() => setActiveDeepDive({title: 'Integrity: Copy-Paste Detection', source: 'Linguistic Analysis', evidence: 'Phrase repeated verbatim 12 times across Sections 4, 7, and 9.', confidence: 92})} className="text-[9px] font-bold bg-slate-800 text-white px-3 py-1.5 rounded-full hover:bg-slate-900 transition-colors flex items-center gap-1 shadow-sm"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
                                 </div>
                              </div>
-                             <div className="bg-white/5 rounded-xl overflow-hidden border border-white/5 group hover:border-purple-400/30 transition-colors">
-                                <div className="px-4 py-3 flex items-start justify-between gap-2 border-b border-white/5">
+
+                             <div className="bg-white rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm group hover:border-purple-400/30 transition-all hover:shadow-md">
+                                <div className="px-4 py-3 flex items-start justify-between gap-2 border-b border-slate-100 bg-slate-50/40">
                                    <div>
-                                      <p className="text-xs font-bold text-white leading-tight">Metadata Mismatch</p>
-                                      <span className="text-[8px] font-black text-purple-400 uppercase tracking-widest">Suspicious</span>
+                                      <p className="text-xs font-bold text-slate-900 leading-tight">Metadata Mismatch</p>
+                                      <span className="text-[8px] font-black text-purple-600 uppercase tracking-widest px-1 bg-purple-500/10 rounded">Suspicious</span>
                                    </div>
-                                   <div className="flex items-center gap-1 bg-purple-500/10 px-2 py-0.5 rounded-full border border-purple-500/20 shrink-0">
-                                      <span className="material-symbols-outlined text-[10px] text-purple-400" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
-                                      <span className="text-[8px] font-black text-purple-400">100%</span>
+                                   <div className="flex items-center gap-1 bg-purple-500/10 px-2 py-0.5 rounded-full border border-purple-500/20 shrink-0 shadow-sm">
+                                      <span className="material-symbols-outlined text-[10px] text-purple-600" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+                                      <span className="text-[8px] font-black text-purple-600">100%</span>
                                    </div>
                                 </div>
                                 <div className="px-4 py-3">
-                                   <div className="bg-black/20 p-3 rounded-lg border-l-2 border-purple-500/50 space-y-1">
-                                      <div className="flex justify-between items-center">
+                                   <div className="bg-slate-50 p-3 rounded-lg border border-outline-variant/30 space-y-2">
+                                      <div className="flex justify-between items-center bg-white p-1.5 rounded border border-outline-variant/10">
                                          <p className="text-[8px] text-slate-500 uppercase font-mono">Signed Date</p>
-                                         <p className="text-[10px] font-bold text-white">2024-04-01</p>
+                                         <p className="text-[10px] font-bold text-slate-900 border-b border-teal-500">2024-04-01</p>
                                       </div>
-                                      <div className="flex justify-between items-center">
+                                      <div className="flex justify-between items-center bg-white p-1.5 rounded border border-outline-variant/10">
                                          <p className="text-[8px] text-slate-500 uppercase font-mono">File Metadata</p>
-                                         <p className="text-[10px] font-bold text-error">2023-11-15</p>
+                                         <p className="text-[10px] font-bold text-error border-b border-error">2023-11-15</p>
                                       </div>
                                    </div>
                                    <p className="text-[9px] text-slate-500 mt-2 font-mono flex items-center gap-1"><span className="material-symbols-outlined text-[10px]">fingerprint</span> File Metadata Extract</p>
                                 </div>
-                                <div className="px-4 py-2.5 border-t border-white/5 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                   <button onClick={() => setActiveDeepDive({title: 'Integrity: Metadata Mismatch', source: 'Forensic Metadata', evidence: 'Signed Date: 2024-04-01 vs Encoded System Date: 2023-11-15. Submission is likely backdated.', confidence: 100})} className="text-[9px] font-bold bg-primary/80 text-white px-3 py-1 rounded-full hover:bg-primary transition-colors flex items-center gap-1"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
+                                <div className="px-4 py-2.5 border-t border-slate-100 bg-slate-50/30 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                   <button onClick={() => setActiveDeepDive({title: 'Integrity: Metadata Mismatch', source: 'Forensic Metadata', evidence: 'Signed Date: 2024-04-01 vs Encoded System Date: 2023-11-15. Submission is likely backdated.', confidence: 100})} className="text-[9px] font-bold bg-slate-800 text-white px-3 py-1.5 rounded-full hover:bg-slate-900 transition-colors flex items-center gap-1 shadow-sm"><span className="material-symbols-outlined text-[11px]">data_exploration</span> Deep Dive</button>
                                 </div>
                              </div>
                           </div>
