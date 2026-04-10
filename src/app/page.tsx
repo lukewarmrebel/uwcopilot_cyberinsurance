@@ -118,26 +118,31 @@ export default function Dashboard() {
             <span className="material-symbols-outlined text-teal-400 text-sm">psychology</span>
           </div>
           <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-3">
-              <div className="flex items-center gap-2">
+            <div className="flex flex-col h-full bg-white/5 p-5 rounded-lg border border-white/5">
+              <div className="flex items-center gap-2 mb-3">
                 <span className="material-symbols-outlined text-error text-lg">error</span>
                 <p className="text-white text-xs font-bold uppercase tracking-wider">Risk Alert</p>
                 <span className="ml-auto text-[9px] font-bold bg-teal-400/10 text-teal-400 px-1.5 py-0.5 rounded border border-teal-400/20 whitespace-nowrap">CONFIDENCE: HIGH</span>
               </div>
-              <div className="bg-white/5 p-4 rounded-lg">
+              <div className="flex-1">
                 <p className="text-slate-300 text-sm leading-relaxed">3 Healthcare risks identified in queue <span className="text-teal-400">without MFA</span> implementation. High correlation with current sectoral breach trends.</p>
               </div>
+              <div className="mt-4 pt-3 border-t border-white/5">
+                {renderFeedback("alert-risk")}
+              </div>
             </div>
-            <div className="space-y-3">
-              <div className="flex items-center gap-2">
+            <div className="flex flex-col h-full bg-white/5 p-5 rounded-lg border border-white/5">
+              <div className="flex items-center gap-2 mb-3">
                 <span className="material-symbols-outlined text-teal-400 text-lg">lightbulb</span>
                 <p className="text-white text-xs font-bold uppercase tracking-wider">Referral Insights</p>
                 <span className="ml-auto text-[9px] font-bold bg-amber-400/10 text-amber-400 px-1.5 py-0.5 rounded border border-amber-400/20 whitespace-nowrap">CONFIDENCE: MED</span>
               </div>
-              <div className="bg-white/5 p-4 rounded-lg">
+              <div className="flex-1">
                 <p className="text-slate-300 text-sm leading-relaxed">Historical data suggests <span className="text-teal-400">Deductibles ≥₹10L</span> have a 45% higher approval rate for similar risk profiles.</p>
               </div>
-              {renderFeedback("alert-referral")}
+              <div className="mt-4 pt-3 border-t border-white/5">
+                {renderFeedback("alert-referral")}
+              </div>
             </div>
           </div>
         </div>
@@ -148,33 +153,55 @@ export default function Dashboard() {
               <h3 className="text-teal-400 text-[11px] font-bold uppercase tracking-[0.2em]">Portfolio Signals</h3>
               <span className="material-symbols-outlined text-teal-400 text-sm">monitoring</span>
             </div>
-            <div className="flex flex-col gap-y-4">
-              <div className="flex justify-between items-center whitespace-nowrap">
+            <div className="flex flex-col gap-y-3">
+              {/* Row 1 */}
+              <div className="grid grid-cols-[1fr_80px_100px] items-center gap-4 py-2 border-b border-white/5 last:border-0">
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></div>
                   <span className="text-sm font-medium text-slate-300">Aggregated Ransomware Exposure</span>
                 </div>
-                <span className="text-xs font-bold text-teal-400">Stable</span>
-                {renderFeedback("sig-ransom")}
+                <span className="text-xs font-bold text-teal-400 text-right">Stable</span>
+                <div className="flex justify-end scale-90 origin-right">
+                  {renderFeedback("sig-ransom")}
+                </div>
               </div>
-              <div className="flex justify-between items-center whitespace-nowrap">
+
+              {/* Row 2 */}
+              <div className="grid grid-cols-[1fr_80px_100px] items-center gap-4 py-2 border-b border-white/5 last:border-0">
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-error"></div>
                   <span className="text-sm font-medium text-slate-300">Supply Chain Vulnerability</span>
                 </div>
-                <span className="text-xs font-bold text-error">+12%</span>
-                {renderFeedback("sig-supply")}
+                <span className="text-xs font-bold text-error text-right">+12%</span>
+                <div className="flex justify-end scale-90 origin-right">
+                  {renderFeedback("sig-supply")}
+                </div>
               </div>
-              <div className="flex justify-between items-center whitespace-nowrap">
+
+              {/* Row 3 */}
+              <div className="grid grid-cols-[1fr_80px_100px] items-center gap-4 py-2 border-b border-white/5 last:border-0">
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
                   <span className="text-sm font-medium text-slate-300">Renewal Retention Rate</span>
                 </div>
-                <span className="text-xs font-bold text-white">92%</span>
+                <span className="text-xs font-bold text-white text-right">92%</span>
+                <div className="flex justify-end scale-90 origin-right">
+                  {renderFeedback("sig-retention")}
+                </div>
               </div>
-              <div className="bg-white/5 px-3 py-2 rounded flex items-start gap-3 border border-white/5">
-                <img className="w-6 h-6 rounded-sm object-cover shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv_-s4-kM-xS3Rd9CQ1k-QYm6ulhdFTHn8g5VGKUAHTUy3GKt79oN3y-5pu9OZoiRiqGFgING5HQhOzfL3GdZcsuas9RqNPT49wcZILjS6MDHKmNT0vcAtNKgYjU_lexxc2xEybLCz4cGSv7EacIizshUN3YxhJZgROo1MGqQAfN8No2QYhqfqNJVvkcNxmz7SRR_KVJF3bzFwOf7EjpBeO46EbwKZdTHmooaWwApMz-xzQ2pllnCiP5iFYXW5YPoQKGVMSgMKiXM" alt="Portfolio drift signal"/>
-                <p className="text-[10px] text-slate-300 leading-tight"><span className="font-bold text-teal-400 uppercase">Portfolio Drift:</span> Increased exposure in FinTech sector detected.</p>
+
+              {/* Portfolio Drift Signal */}
+              <div className="mt-2 bg-white/5 px-4 py-3 rounded-lg border border-white/5">
+                <div className="flex items-start gap-3 mb-2">
+                  <img className="w-7 h-7 rounded-sm object-cover shrink-0 ring-1 ring-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv_-s4-kM-xS3Rd9CQ1k-QYm6ulhdFTHn8g5VGKUAHTUy3GKt79oN3y-5pu9OZoiRiqGFgING5HQhOzfL3GdZcsuas9RqNPT49wcZILjS6MDHKmNT0vcAtNKgYjU_lexxc2xEybLCz4cGSv7EacIizshUN3YxhJZgROo1MGqQAfN8No2QYhqfqNJVvkcNxmz7SRR_KVJF3bzFwOf7EjpBeO46EbwKZdTHmooaWwApMz-xzQ2pllnCiP5iFYXW5YPoQKGVMSgMKiXM" alt="Portfolio drift signal"/>
+                  <p className="text-[11px] text-slate-300 leading-tight">
+                    <span className="font-bold text-teal-400 uppercase mr-1">Portfolio Drift:</span> 
+                    Increased exposure in FinTech sector detected across 12 high-limit accounts.
+                  </p>
+                </div>
+                <div className="pt-2 border-t border-white/5">
+                  {renderFeedback("sig-drift")}
+                </div>
               </div>
             </div>
           </div>
